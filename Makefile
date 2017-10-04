@@ -7,7 +7,7 @@ PACKAGE_NAME=tvrenamer
 .PHONY: help
 help:
 	echo
-	echo 'Utility Makefile for TVDB Heuristic File Renamer'
+	echo 'Utility Makefile for TV Show File Renamer'
 	echo '============================'
 	echo
 	echo 'Targets supported are:'
@@ -55,19 +55,6 @@ develop: install-deps
 uninstall:
 	pip uninstall --yes $(PACKAGE_NAME)
 	rm -rf *.egg-info/
-
-#--system-site-packages plugin issue workaround
-# To work correctly with virtual environments, sphinx, pytest, and all their
-# plugins must be installed into the virtual environment even if they are
-# already available in the site packages.
-# If additional plugins to sphinx and pytest are added to setup.py, they must
-# also be added here.
-.PHONY: sitepkg-develop
-sitepkg-develop: develop
-	pip install --ignore-installed \
-	sphinx \
-	pytest pytest-cov pytest-sugar \
-	ipython ipdb
 
 .PHONY: lint
 lint:

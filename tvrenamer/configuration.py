@@ -22,7 +22,7 @@ def get_config_file(basename):
     """ Looks for a configuration file in 3 locations:
 
         - the current directory
-        - the user config directory (~/.config/tvdb_renamer)
+        - the user config directory (~/.config/tvrenamer)
         - the version installed with the package (using setuptools resource API)
 
     Args:
@@ -36,11 +36,11 @@ def get_config_file(basename):
         os.path.join(
             os.path.expanduser("~"),
             ".config",
-            "tvdb_renamer",
+            "tvrenamer",
             basename),
         resource_filename(
-            Requirement.parse("tvdb_renamer"),
-            os.path.join('tvdb_renamer', basename))
+            Requirement.parse("tvrenamer"),
+            os.path.join('tvrenamer', basename))
     ]
 
     for location in locations:
@@ -50,7 +50,7 @@ def get_config_file(basename):
 def copy_default_config_to_user_directory(
         basename,
         clobber=False,
-        dst_dir='~/.config/tvdb_renamer'):
+        dst_dir='~/.config/tvrenamer'):
     """ Copies the default configuration file into the user config directory.
 
     Args:
@@ -62,8 +62,8 @@ def copy_default_config_to_user_directory(
     dst_dir = os.path.expanduser(dst_dir)
     dst = os.path.join(dst_dir, basename)
     src = resource_filename(
-        Requirement.parse("tvdb_renamer"),
-        os.path.join('tvdb_renamer', basename))
+        Requirement.parse("tvrenamer"),
+        os.path.join('tvrenamer', basename))
 
     if not os.path.exists(dst_dir):
         os.makedirs(dst_dir)
@@ -71,7 +71,7 @@ def copy_default_config_to_user_directory(
     if clobber or not os.path.isfile(dst):
         shutil.copy(src, dst)
 
-def get_configuration(basename='tvdb_renamer.cfg', parents=None):
+def get_configuration(basename='tvrenamer.cfg', parents=None):
     """Parses and returns the program configuration options,
     taken from a combination of ini-style config file, and
     command line arguments.
@@ -97,10 +97,10 @@ def get_configuration(basename='tvdb_renamer.cfg', parents=None):
         parents=parents or [],
         default_config_files=[
             resource_filename(
-                Requirement.parse("tvdb_renamer"),
-                os.path.join('tvdb_renamer', basename)),
+                Requirement.parse("tvrenamer"),
+                os.path.join('tvrenamer', basename)),
             os.path.join(
-                os.path.expanduser("~/.config/tvdb_renamer"),
+                os.path.expanduser("~/.config/tvrenamer"),
                 basename),
             os.path.join(os.curdir, basename)])
 
@@ -109,9 +109,9 @@ def get_configuration(basename='tvdb_renamer.cfg', parents=None):
         '-lc',
         '--logging-config',
         required=False,
-        default='tvdb_renamer_logging.cfg',
+        default='tvrenamer_logging.cfg',
         metavar='FILE',
-        env_var='TVDB_RENAMER_LOGGING_CONFIG',
+        env_var='TVRENAMER_LOGGING_CONFIG',
         help='Logging configuration file')
 
     parser.add(
@@ -119,7 +119,7 @@ def get_configuration(basename='tvdb_renamer.cfg', parents=None):
         '--version',
         required=False,
         action='store_true',
-        help='''Display tvdb_renamer version''')
+        help='''Display tvrenamer version''')
 
     parser.add(
         '-vb',

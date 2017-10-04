@@ -51,7 +51,7 @@ def start_cli():
         return
 
     try:
-        pass
+        logging.getLogger(__name__).info('todo')
 
     except Exception as exception:
         logging.getLogger(__name__).error(exception, exc_info=True)

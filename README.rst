@@ -1,5 +1,5 @@
 ===============================
-TVDB Heuristic File Renamer
+Heuristic TV File Renamer
 ===============================
 
 TV show file renamer that pulls data from TVDB, using heuristics to match files to episodes.
