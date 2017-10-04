@@ -1,5 +1,5 @@
 SHELL=/bin/sh
-PACKAGE_NAME=tvdb-renamer
+PACKAGE_NAME=tvrenamer
 
 .SILENT:
 .IGNORE:
@@ -15,7 +15,7 @@ help:
 	echo '  * clean: removes the build directories, as well as __pycache__ and *.pyc files. Note that a clean also removes the generated documentation (as this is placed into build/docs).'
 	echo '  * sitepkg-develop: Use this only when you are using a virtual environment created with the --system-site-packages flag. It forcibly installs some packages into the virtual environment to work around issues where a package and its plugins are installed to different locations'
 	echo '  * install-deps: installs development and test dependencies into your virtual environment.'
-	echo '  * develop: installs tvdb-renamer in development mode.'
+	echo '  * develop: installs tvrenamer in development mode.'
 	echo '  * uninstall: removes the development package from pip.'
 	echo '  * test: runs py.test.'
 	echo '  * test-slow: runs py.test, including slow tests.'

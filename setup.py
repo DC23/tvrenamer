@@ -29,13 +29,13 @@ class PyTest(TestCommand):
         sys.exit(errcode)
 
 setup(
-    name='tvdb-renamer',
+    name='tvrenamer',
     version='0.2.0',
     description='TV show file renamer that pulls data from TVDB, using heuristics to match files to episodes.',
     long_description=long_description,
 
     # The project's main homepage.
-    url='https://github.com/DC23/tvdb-renamer',
+    url='https://github.com/DC23/tvrenamer',
 
     # Author details
     author='JugglinDan',
@@ -85,7 +85,7 @@ setup(
 
     platforms='any',
 
-    test_suite='tests.test_tvdb_renamer',
+    test_suite='tests.test_tvrenamer',
 
     # List run-time dependencies here.  These will be installed by pip when your
     # project is installed. For an analysis of "install_requires" vs pip's
@@ -138,7 +138,7 @@ setup(
     # pip to create the appropriate form of executable for the target platform.
     # Delete either or both of these if not required (and remove the corresponding imports in the package __init__.py
     entry_points={
-        'console_scripts': ['rename=tvdb_renamer:start_cli',],
+        'console_scripts': ['rename=tvrenamer:start_cli',],
     },
 
     # Is your project zip safe?

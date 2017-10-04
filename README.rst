@@ -5,8 +5,8 @@ TVDB Heuristic File Renamer
 TV show file renamer that pulls data from TVDB, using heuristics to match files to episodes.
 
 * Free software: Apache-2.0
-* Homepage: https://github.com/DC23/tvdb-renamer
-* Documentation: https://tvdb-renamer.readthedocs.org
+* Homepage: https://github.com/DC23/tvrenamer
+* Documentation: https://tvrenamer.readthedocs.org
 * Version: 0.2.0
 
 Installation
