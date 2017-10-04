@@ -2,21 +2,8 @@
 """ tvdb-renamer: TV show file renamer
 """
 
-# Ensure backwards compatibility with Python 2
-from __future__ import (
-    absolute_import,
-    division,
-    print_function,
-    unicode_literals)
-from builtins import *
-
 import logging
 import logging.config
-import os
-from datetime import datetime
-from time import sleep
-
-from pkg_resources import Requirement, resource_filename
 
 from .configuration import (
     get_configuration,

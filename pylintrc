@@ -35,7 +35,7 @@ load-plugins=
 # --enable=similarities". If you want to run only the classes checker, but have
 # no Warning level messages displayed, use"--disable=all --enable=classes
 # --disable=W"
-disable=locally-disabled
+disable=locally-disabled,no-member,broad-except
 
 
 [REPORTS]
@@ -193,10 +193,10 @@ attr-rgx=[a-z_][a-z0-9_]{2,30}$
 attr-name-hint=[a-z_][a-z0-9_]{2,30}$
 
 # Regular expression matching correct function names
-function-rgx=[a-z_][a-z0-9_]{2,30}$
+function-rgx=[a-z_][a-z0-9_]{2,40}$
 
 # Naming hint for function names
-function-name-hint=[a-z_][a-z0-9_]{2,30}$
+function-name-hint=[a-z_][a-z0-9_]{2,40}$
 
 # Regular expression matching correct inline iteration names
 inlinevar-rgx=[A-Za-z_][A-Za-z0-9_]*$
