@@ -3,6 +3,7 @@
 """
 
 import lxml
+import lxml.html
 import requests
 import pandas as pd
 

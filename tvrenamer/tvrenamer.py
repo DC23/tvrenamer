@@ -11,6 +11,7 @@ from .configuration import (
     get_configuration,
     get_config_file,
     copy_default_config_to_user_directory)
+from.episode_matcher import get_best_match
 from .metadata import __author__, __email__, __version__
 from .tvdb_scraper import read_show_html, parse_show_data
 
@@ -53,30 +54,26 @@ def start_cli():
         # Parse the files
         print('Scanning for files at {0}'.format(config.path))
         search_path = os.path.join(config.path, '*')
-        for file in glob(search_path):
-            base, ext = os.path.splitext(file)
+        for f in glob(search_path):
+            base, ext = os.path.splitext(f)
             basename = os.path.basename(base)
-            directory = os.path.dirname(file)
+            directory = os.path.dirname(f)
             if config.verbose:
                 print('Checking {0}'.format(basename))
 
-            # match = p.match(os.path.basename(basename))
-            # if match:
-                # name = match.group(1)
-                # #print(name)
-                # matching_data = get_match(name)
-                # if not matching_data:
-                    # print('no match for {0}'.format(name))
-                # else:
-                    # new_name = 's{season:02d}-e{episode:03d}-{name}'.format(
-                        # season=matching_data['season'],
-                        # episode=matching_data['episode'],
-                        # name=matching_data['name'])
-
-                    # new_name = os.path.join(directory, new_name) + ext
-                    # print('{0} --> {1}'.format(file, new_name))
-                    # if not dry_run:
-                        # os.rename(file, new_name)
+            best_match = get_best_match(data, basename)
+            if best_match:
+                new_name = 's{season:02d}-e{episode:03d}-{title}-{name}'.format(
+                    season=best_match['season'],
+                    episode=best_match['episode'],
+                    title=title,
+                    name=best_match['name'])
+                new_name = os.path.join(directory, new_name) + ext
+                print('    --> {0}'.format(new_name))
+                if not dry_run:
+                    os.rename(f, new_name)
+            else:
+                print('    no match')
 
     except Exception as exception:
         logging.getLogger(__name__).error(exception, exc_info=True)

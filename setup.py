@@ -89,6 +89,7 @@ setup(
     install_requires=[
         'configargparse',
         'future',
+        'fuzzywuzzy[speedup]',
         'lxml',
         'pandas',
         'requests',
