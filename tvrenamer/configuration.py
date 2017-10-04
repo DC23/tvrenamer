@@ -93,7 +93,7 @@ def get_configuration(basename='tvrenamer.cfg', parents=None):
 
     parser = configargparse.ArgParser(
         formatter_class=configargparse.ArgumentDefaultsRawHelpFormatter,
-        add_help=False,
+        add_help=True,
         parents=parents or [],
         default_config_files=[
             resource_filename(
@@ -136,10 +136,18 @@ def get_configuration(basename='tvrenamer.cfg', parents=None):
         help='''Conduct a dry run. No changes are written to file''')
 
     parser.add(
-        '-h',
-        '--help',
-        required=False,
-        action='store_true',
-        help='''Print help''')
+        '-p',
+        '--path',
+        required=True,
+        metavar='DIRECTORY',
+        help='''The directory to scan for files''')
+
+    parser.add(
+        '-id',
+        '--showid',
+        required=True,
+        type=str,
+        help='''TVDB show id for matching episodes''')
+
 
     return parser.parse_known_args()[0], parser.print_help

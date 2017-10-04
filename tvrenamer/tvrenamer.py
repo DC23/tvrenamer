@@ -42,7 +42,7 @@ def __init_logging(logging_config_file):
 def start_cli():
     """ Runs the renamer."""
 
-    config, help_function = get_configuration()
+    config = get_configuration()
     __init_logging(config.logging_config)
     logging.getLogger(__name__).info('renamer version %s', __version__)
     logging.getLogger(__name__).info('verbose mode: %s', config.verbose)
