@@ -5,8 +5,9 @@
 import lxml
 import requests
 import pandas as pd
+from lxml import html
 
-def read_show_data_table(show_id):
+def read_show_html(show_id):
     """
     Scrapes show data from TVDB.
 
@@ -14,6 +15,7 @@ def read_show_data_table(show_id):
         show_id (str): The TVDB show id
 
     Returns:
+        str: The Show title.
         str: The complete HTML table of episode data for the given show.
     """
     url = 'https://www.thetvdb.com/?tab=seasonall&id={id}&lid=7'.format(
@@ -21,7 +23,8 @@ def read_show_data_table(show_id):
     page = requests.get(url)
     tree = lxml.html.fromstring(page.content)
     episodes = tree.xpath('//*[@id="listtable"]')[0]
-    return lxml.etree.tostring(episodes)
+    title = tree.xpath('//*[@id="maincontent"]/div[2]/h1/a')[0].text
+    return title, lxml.etree.tostring(episodes)
 
 def parse_show_data(html):
     """

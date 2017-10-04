@@ -25,3 +25,17 @@ def test_column_dtypes():
 def test_special_numbering():
     assert data[data.name == 'Pilot'].episode[0] == 1
 
+def test_episode_one():
+    assert len(data[data.name == 'Episode 1'].episode) == 1
+    assert data[data.name == 'Episode 1'].season.iloc[0] == 1
+    assert data[data.name == 'Episode 1'].episode.iloc[0] == 1
+
+def test_episode_two():
+    assert len(data[data.name == 'Episode 2'].episode) == 1
+    assert data[data.name == 'Episode 2'].season.iloc[0] == 1
+    assert data[data.name == 'Episode 2'].episode.iloc[0] == 2
+
+def test_episode_three():
+    assert len(data[data.name == 'Episode 3'].episode) == 1
+    assert data[data.name == 'Episode 3'].season.iloc[0] == 1
+    assert data[data.name == 'Episode 3'].episode.iloc[0] == 3

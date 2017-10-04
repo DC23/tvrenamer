@@ -77,8 +77,7 @@ def get_configuration(basename='tvrenamer.cfg', parents=None):
             help arguments.
 
     Returns:
-        The options object, and a function that can be called to print the help
-        text.
+        The options object.
     """
     copy_default_config_to_user_directory(basename)
 
@@ -141,4 +140,4 @@ def get_configuration(basename='tvrenamer.cfg', parents=None):
         help='''TVDB show id for matching episodes''')
 
 
-    return parser.parse_known_args()[0], parser.print_help
+    return parser.parse_known_args()[0]
