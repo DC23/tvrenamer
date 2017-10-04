@@ -122,6 +122,13 @@ def get_configuration(basename='tvdb_renamer.cfg', parents=None):
         help='''Display tvdb_renamer version''')
 
     parser.add(
+        '-vb',
+        '--verbose',
+        required=False,
+        action='store_true',
+        help='''Verbose reporting mode''')
+
+    parser.add(
         '-dr',
         '--dry-run',
         required=False,

@@ -4,10 +4,5 @@
     TV show file renamer that pulls data from TVDB, using heuristics to match files to episodes.
 """
 
-# import the CLI entry point
+from .metadata import __author__, __email__, __version__
 from .tvdb_renamer import start_cli
-
-
-__author__ = 'JugglinDan'
-__email__ = 'jugglindan@gmail.com'
-__version__ = '0.2.0'
