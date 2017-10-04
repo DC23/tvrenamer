@@ -5,7 +5,6 @@
 import lxml
 import requests
 import pandas as pd
-from lxml import html
 
 def read_show_html(show_id):
     """
@@ -26,12 +25,13 @@ def read_show_html(show_id):
     title = tree.xpath('//*[@id="maincontent"]/div[2]/h1/a')[0].text
     return title, lxml.etree.tostring(episodes)
 
-def parse_show_data(html):
+def parse_show_data(html_str):
     """
     Parses TVDB show data from a HTML string.
 
     Args:
-        html (str): The complete HTML table of episode data for the given show.
+        html_str (str): The complete HTML table of episode data for the given
+            show.
 
     Returns:
         pandas.DataFrame: Dataframe containing the following columns:
@@ -42,7 +42,7 @@ def parse_show_data(html):
     """
 
     data = pd.read_html(
-        html,
+        html_str,
         header=0,
         parse_dates=[2])[0]
 
@@ -52,25 +52,25 @@ def parse_show_data(html):
         inplace=True,
         columns=
         {
-            'Episode Number': 'ep_num', 
+            'Episode Number': 'ep_num',
             'Episode Name': 'name',
             'Originally Aired': 'aired',
         })
 
     # parse season and episode numbers
     def season(row):
+        'maps the ep_num column to a new season column'
         season = row['ep_num'].split('x')[0].strip().lower()
         if season == 'special':
             return 0
-        else:
-            return int(season)
+        return int(season)
 
     def episode(row):
+        'maps the ep_num column to a new episode column'
         split = row['ep_num'].split('x')
         if len(split) > 1:
             return int(split[1].strip().lower())
-        else:
-            return 0
+        return 0
 
     data['season'] = data.apply(season, axis=1)
     data['episode'] = data.apply(episode, axis=1)
@@ -79,9 +79,9 @@ def parse_show_data(html):
     del data['ep_num']
 
     # take a copy so we can modify the data frame while iterating
-    df = data.copy()
+    data_copy = data.copy()
     special_episode = 0
-    for i, row in df.iterrows():
+    for i, row in data_copy.iterrows():
         if row.season == 0:
             special_episode += 1
             data.loc[i, 'episode'] = special_episode
