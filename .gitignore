@@ -1,3 +1,6 @@
+# Build artifacts and directories
+tags
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -46,9 +49,18 @@ coverage.xml
 *.cover
 .hypothesis/
 
+# Python cache files
+__pycache__/
+*.pyc
+
 # Translations
 *.mo
 *.pot
+
+# PyCharm Project files
+.project
+.idea/
+*.dat
 
 # Django stuff:
 *.log
