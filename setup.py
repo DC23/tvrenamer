@@ -85,7 +85,7 @@ setup(
 
     platforms='any',
 
-    test_suite='tests.test_tvdb-renamer',
+    test_suite='tests.test_tvdb_renamer',
 
     # List run-time dependencies here.  These will be installed by pip when your
     # project is installed. For an analysis of "install_requires" vs pip's
@@ -111,12 +111,9 @@ setup(
             'wheel',
         ],
         'test': [
-
             'pylint',
             'pytest',
-
             'pytest-sugar',
-
         ],
     },
 
@@ -137,12 +134,9 @@ setup(
     # pip to create the appropriate form of executable for the target platform.
     # Delete either or both of these if not required (and remove the corresponding imports in the package __init__.py
     entry_points={
-
-        'console_scripts': ['rename = tvdb-renamer:start_cli',],
-        'gui_scripts': ['gui_entry_point = tvdb-renamer:start_gui',],
-
+        'console_scripts': ['rename=tvdb_renamer:start_cli',],
     },
 
     # Is your project zip safe?
-    # zip_safe=True,
+    zip_safe=True,
 )

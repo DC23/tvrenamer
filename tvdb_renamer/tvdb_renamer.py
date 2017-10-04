@@ -14,10 +14,5 @@ def start_cli():
     print('tvdb-renamer placeholder CLI entry point')
 
 
-def start_gui():
-    """ GUI entry point for tvdb-renamer """
-    print('tvdb-renamer placeholder GUI entry point')
-
-
 if __name__ == 'main':
     start_cli()

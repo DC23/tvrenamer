@@ -5,10 +5,7 @@
 """
 
 # import the CLI entry point
-from .tvdb-renamer import start_cli
-
-# import the GUI entry point
-from .tvdb-renamer import start_gui
+from .tvdb_renamer import start_cli
 
 
 __author__ = 'JugglinDan'
