@@ -23,7 +23,7 @@ def get_configuration():
         '-v',
         '--version',
         action='version',                    
-        version='%(prog)s (version 0.3.0)')
+        version='%(prog)s (version 0.4.0)')
 
     parser.add_argument(
         '-vb',

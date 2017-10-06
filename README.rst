@@ -7,7 +7,7 @@ TV show file renamer that pulls data from TVDB, using heuristics to match files 
 * Free software: Apache-2.0
 * Homepage: https://github.com/DC23/tvrenamer
 * Documentation: https://tvrenamer.readthedocs.org
-* Version: 0.3.0
+* Version: 0.4.0
 
 Installation
 ------------
