@@ -134,7 +134,7 @@ setup(
     # pip to create the appropriate form of executable for the target platform.
     # Delete either or both of these if not required (and remove the corresponding imports in the package __init__.py
     entry_points={
-        'console_scripts': ['rename=tvrenamer:start_cli',],
+        'console_scripts': ['tvrenamer=tvrenamer:start_cli',],
     },
 
     # Is your project zip safe?

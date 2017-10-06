@@ -58,20 +58,32 @@ def start_cli():
             base, ext = os.path.splitext(f)
             basename = os.path.basename(base)
             directory = os.path.dirname(f)
-            if config.verbose:
-                print('Checking {0}'.format(basename))
 
-            best_match = get_best_match(data, basename)
+            best_match, best_ratio = get_best_match(data, basename)
             if best_match:
                 new_name = 's{season:02d}-e{episode:03d}-{title}-{name}'.format(
                     season=best_match['season'],
                     episode=best_match['episode'],
                     title=title,
                     name=best_match['name'])
-                new_name = os.path.join(directory, new_name) + ext
-                print('    --> {0}'.format(new_name))
-                if not dry_run:
-                    os.rename(f, new_name)
+
+                if basename == new_name:
+                    if config.verbose:
+                        print('    Already named correctly')
+                    continue
+
+                print('\nChecking {0}'.format(basename))
+
+                if best_ratio >= config.threshold:
+                    print('    Similarity score: {0}'.format(best_ratio))
+                    print('    --> {0}'.format(new_name))
+                    if not config.dry_run:
+                        new_name = os.path.join(directory, new_name) + ext
+                        os.rename(f, new_name)
+                else:
+                    print('    Below threshold')
+                    print('    Similarity score: {0}'.format(best_ratio))
+                    print('    Best Match: {0}'.format(new_name))
             else:
                 print('    no match')
 

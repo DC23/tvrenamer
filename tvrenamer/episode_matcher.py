@@ -5,8 +5,16 @@
 from fuzzywuzzy import fuzz
 
 
-def get_best_match(data, name, threshold=80):
-    """
+def get_best_match(data, name):
+    """ Finds the best match for an episode name in the data table.
+
+    Args:
+        data (pandas.DataFrame): The TV show data table
+        name (str): the episode name to match
+
+    Returns:
+        dict: contains the season, episode, and name of the best match
+        int: the similarity ratio for the best match
     """
     best_ratio = 0
     best_index = None
@@ -16,10 +24,10 @@ def get_best_match(data, name, threshold=80):
             best_ratio = ratio
             best_index = row.Index
             
-    m = {}
-    if best_ratio >= threshold:
-        m['season'] = data.iloc[best_index]['season']
-        m['episode'] = data.iloc[best_index]['episode']
-        m['name'] = data.iloc[best_index]['name']
+    m = {
+        'season': data.iloc[best_index]['season'],
+        'episode': data.iloc[best_index]['episode'],
+        'name': data.iloc[best_index]['name'],
+        }
                                    
     return m, best_ratio

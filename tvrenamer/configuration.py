@@ -105,6 +105,15 @@ def get_configuration(basename='tvrenamer.cfg', parents=None):
         help='Logging configuration file')
 
     parser.add(
+        '-t',
+        '--threshold',
+        required=False,
+        default=90,
+        type=int,
+        help='Similarity threshold for show name fuzzy matching',
+        )
+
+    parser.add(
         '-v',
         '--version',
         required=False,
