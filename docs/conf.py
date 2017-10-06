@@ -29,7 +29,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 project = 'TVDB Heuristic File Renamer'
 copyright = '2017,  '
-version = release = '0.2.0'
+version = release = '0.3.0'
 pygments_style = 'perldoc'
 templates_path = ['.']
 html_use_smartypants = True

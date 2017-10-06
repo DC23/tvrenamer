@@ -30,7 +30,7 @@ class PyTest(TestCommand):
 
 setup(
     name='tvrenamer',
-    version='0.2.0',
+    version='0.3.0',
     description='TV show file renamer that pulls data from TVDB, using heuristics to match files to episodes.',
     long_description=long_description,
 

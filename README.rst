@@ -7,7 +7,7 @@ TV show file renamer that pulls data from TVDB, using heuristics to match files 
 * Free software: Apache-2.0
 * Homepage: https://github.com/DC23/tvrenamer
 * Documentation: https://tvrenamer.readthedocs.org
-* Version: 0.2.0
+* Version: 0.3.0
 
 Installation
 ------------
@@ -18,7 +18,7 @@ Development
 
 There is a makefile in the project root with targets for the most common
 development operations such as lint checks, running unit tests, building the
-documentation, and building installer packages. 
+documentation, and building installer packages.
 
 Run make with no target to see the list of targets::
 
